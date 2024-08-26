@@ -1,19 +1,27 @@
 
 <script>
 import { store } from '../store';
+import axios from 'axios';
 
 export default{
     data() {
         return {
             store,
-            Text: ""
+            Text: "",
         }
     },
     methods: {
         // Questa funzione mi permette di cliccare un pulsante e fare in modo che il valore della variabile "Text" diventi il valore della variabile "searchText" all'interno del file store.js
         GetValue() {
-            this.store.searchText = this.Text;
+            this.store.searchText = this.Text.replace(" ", "+");
             //console.log(store.searchText)
+            
+            if (store.searchText !== ""){   
+                axios.get(`${store.apiUrl}&query=${store.searchText}`).then((response) => {
+                store.filmList = response.data;
+                store.loading = false;
+                });
+            }
         }
     }
 }
