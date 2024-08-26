@@ -18,7 +18,7 @@ export default{
             
             if (store.searchText !== ""){   
                 axios.get(`${store.apiUrl}&query=${store.searchText}`).then((response) => {
-                store.filmList = response.data;
+                store.filmList = response.data.results;
                 store.loading = false;
                 });
             }
