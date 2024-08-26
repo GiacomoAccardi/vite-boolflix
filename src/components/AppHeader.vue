@@ -5,7 +5,15 @@ import { store } from '../store';
 export default{
     data() {
         return {
-            store
+            store,
+            Text: ""
+        }
+    },
+    methods: {
+        // Questa funzione mi permette di cliccare un pulsante e fare in modo che il valore della variabile "Text" diventi il valore della variabile "searchText" all'interno del file store.js
+        GetValue() {
+            this.store.searchText = this.Text;
+            //console.log(store.searchText)
         }
     }
 }
@@ -22,8 +30,8 @@ export default{
             </div>
             <!-- colonna che conterrà la search bar -->
             <div class="col">
-                <input type="text">
-                <button>cerca</button>
+                <input type="text" v-model="Text">
+                <button id="btn1" @click="GetValue()">cerca</button>
             </div>
 
         </div>
