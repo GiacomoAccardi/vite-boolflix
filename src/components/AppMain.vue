@@ -54,7 +54,8 @@ export default {
                         </li>
 
                         <li>
-                            <span><strong>Overview: </strong> {{ film.overview }} </span>
+                            <strong>Overview: </strong>
+                            <p>{{ film.overview }}</p>
                         </li>
                     </ul>
                 </div>
@@ -87,7 +88,8 @@ export default {
                         </li>
 
                         <li>
-                            <span><strong>Overview: </strong> {{ serie.overview }} </span>
+                            <strong>Overview: </strong>
+                            <p>{{ serie.overview }}</p>
                         </li>
                     </ul>
                 </div>
@@ -120,6 +122,9 @@ export default {
                 font-size: 10pt;
                 margin: 10px;
                 position: relative;
+                overflow-y: auto;
+                scrollbar-width: thin;
+                
                 
                 ul{
                     list-style: none;
