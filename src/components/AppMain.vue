@@ -29,7 +29,7 @@ export default {
             <!-- sezione film -->
             <div class="content">
                 <div class="col-100">
-                    <h2>Film:</h2>
+                    <h2>FILM</h2>
                 </div>
                 <!-- card per i film -->
                 <div class="box" v-for="film in store.filmList">
@@ -52,6 +52,10 @@ export default {
                             <strong>Lingua originale: </strong>
                             <lang-flag :iso="film.original_language" />
                         </li>
+
+                        <li>
+                            <span><strong>Overview: </strong> {{ film.overview }} </span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -59,7 +63,7 @@ export default {
             <!-- sezione serie tv -->
             <div class="content">
                 <div class="col-100">
-                    <h2 class="mt-30">Serie TV:</h2>
+                    <h2 class="mt-50">SERIE TV</h2>
                 </div>
                 <!-- card per le serie -->
                 <div class="box" v-for="serie in store.seriesList">
@@ -81,6 +85,10 @@ export default {
                             <strong>Lingua originale: </strong>
                             <lang-flag :iso="serie.original_language" />
                         </li>
+
+                        <li>
+                            <span><strong>Overview: </strong> {{ serie.overview }} </span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -101,28 +109,50 @@ export default {
 
             h2{
                 margin-bottom: 30px;
+                color: white;
+                margin-left: 10px;
             }
 
             .box{
                 width: 250px;
-                min-height: 350px;
                 background-color: black;
                 color: white;
                 font-size: 10pt;
                 margin: 10px;
-    
+                position: relative;
+                
                 ul{
                     list-style: none;
+                    position: absolute;
+                    top: 0%;
+                    padding: 15px;
     
                     li {
                         margin-top: 5px;
                     }
                 }
 
+
                 img{
                     width: 250px;
                     min-height: 375px;
                 }
+            }
+
+            .box ul{
+                display: none;
+                opacity: 0%;
+            }
+
+            .box:hover img{
+                opacity: 20%;
+                transition: 0.4s;
+            }
+
+            .box:hover ul{
+                display: block;
+                opacity: 100%;
+                transition: 0.5s;
             }
         }
     }

@@ -40,9 +40,9 @@ export default{
                 <h1>Boolflix</h1>
             </div>
             <!-- colonna che conterrà la search bar -->
-            <div class="col">
-                <input type="text" v-model="Text" @keyup.enter="GetValue()">
-                <button id="btn1" @click="GetValue()">cerca</button>
+            <div class="col end">
+                <input type="text" v-model="Text" @keyup.enter="GetValue()" placeholder="Cerca..." >
+                <button id="btn1" @click="GetValue()"><strong>Search</strong></button>
             </div>
 
         </div>
@@ -51,10 +51,36 @@ export default{
 
 <style lang="scss">
 header{
-    background-color: grey;
+    background-color: black;
+    padding: 20px 40px;
+
+    h1{
+        color: #E50914;
+    }
 
     .col {
         width: 50%;
+    }
+
+    .end{
+        text-align: end;
+    }
+
+    input{
+        height: 25px;
+        width: 250px;
+    }
+
+    button{
+        color: white;
+        background-color: #E50914;
+        padding: 4px 10PX;
+        border: none;
+
+        &:hover{
+            color: #E50914;
+            background-color: white;
+        }
     }
 }
 </style>
