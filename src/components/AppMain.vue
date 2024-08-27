@@ -1,6 +1,8 @@
 
 <script>
 import { store } from '../store';
+
+//Importo un pacchetto che ho installato che mi permette di inserire delle flag per le lingue
 import LangFlag from 'vue-lang-code-flags';
 
 export default {
@@ -21,7 +23,11 @@ export default {
         <!-- qui andranno le locandine dei film  -->
         <div class="container-sm">
 
+            <!-- sezione film -->
             <div class="content">
+                <div class="col-100">
+                    <h2>Film:</h2>
+                </div>
                 <!-- card per i film -->
                 <div class="box" v-for="film in store.filmList">
                     <ul>
@@ -43,12 +49,38 @@ export default {
                         </li>
                     </ul>
                 </div>
-
             </div>
 
-            <!-- card per i telefilm -->
+            <!-- sezione serie tv -->
+            <div class="content">
+                <div class="col-100">
+                    <h2 class="mt-30">Serie TV:</h2>
+                </div>
+                <!-- card per i film -->
+                <div class="box" v-for="serie in store.seriesList">
+                    <ul>
+                        <li>
+                            <span><strong>Titolo: </strong> {{ serie.name }} </span>
+                        </li>
 
+                        <li>
+                            <span><strong>Titolo originale: </strong> {{ serie.original_name }} </span>
+                        </li>
+
+                        <li>
+                            <span><strong>Voto: </strong> {{ serie.vote_average }} </span>
+                        </li>
+
+                        <li>
+                            <strong>Lingua originale: </strong>
+                            <lang-flag :iso="serie.original_language" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
+
     </main>
 
 </template>
@@ -60,6 +92,10 @@ export default {
         .content{
             display: flex;
             flex-wrap: wrap;
+
+            h2{
+                margin-bottom: 30px;
+            }
 
             .box{
                 width: 250px;

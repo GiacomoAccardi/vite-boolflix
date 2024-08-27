@@ -19,7 +19,10 @@ export default{
             if (store.searchText !== ""){   
                 axios.get(`${store.apiUrl}&query=${store.searchText}`).then((response) => {
                 store.filmList = response.data.results;
-                store.loading = false;
+                });
+
+                axios.get(`${store.seriesUrl}&query=${store.searchText}`).then((response) => {
+                store.seriesList = response.data.results;
                 });
             }
         }
@@ -38,7 +41,7 @@ export default{
             </div>
             <!-- colonna che conterrà la search bar -->
             <div class="col">
-                <input type="text" v-model="Text">
+                <input type="text" v-model="Text" @keyup.enter="GetValue()">
                 <button id="btn1" @click="GetValue()">cerca</button>
             </div>
 
