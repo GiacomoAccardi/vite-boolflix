@@ -4,6 +4,7 @@ import { store } from '../store';
 
 //Importo un pacchetto che ho installato che mi permette di inserire delle flag per le lingue
 import LangFlag from 'vue-lang-code-flags';
+import StarRating from './StarRating.vue';
 
 export default {
     data() {
@@ -14,6 +15,7 @@ export default {
     },
     components: {
     LangFlag,
+    StarRating,
   },
 }
 </script>
@@ -42,7 +44,8 @@ export default {
                         </li>
 
                         <li>
-                            <span><strong>Voto: </strong> {{ film.vote_average }} </span>
+                            <strong>Voto: </strong>
+                            <StarRating :rate="film.vote_average" />
                         </li>
 
                         <li>
@@ -58,7 +61,7 @@ export default {
                 <div class="col-100">
                     <h2 class="mt-30">Serie TV:</h2>
                 </div>
-                <!-- card per i film -->
+                <!-- card per le serie -->
                 <div class="box" v-for="serie in store.seriesList">
                     <img :src="basePath + serie.poster_path" :alt="serie.name">
                     <ul>
