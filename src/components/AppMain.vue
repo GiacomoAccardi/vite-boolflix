@@ -8,7 +8,8 @@ import LangFlag from 'vue-lang-code-flags';
 export default {
     data() {
         return {
-            store
+            store,
+            basePath: 'https://image.tmdb.org/t/p/w300'
         }
     },
     components: {
@@ -30,6 +31,7 @@ export default {
                 </div>
                 <!-- card per i film -->
                 <div class="box" v-for="film in store.filmList">
+                    <img :src="basePath + film.poster_path" :alt="film.title">
                     <ul>
                         <li>
                             <span><strong>Titolo: </strong> {{ film.title }} </span>
@@ -58,6 +60,7 @@ export default {
                 </div>
                 <!-- card per i film -->
                 <div class="box" v-for="serie in store.seriesList">
+                    <img :src="basePath + serie.poster_path" :alt="serie.name">
                     <ul>
                         <li>
                             <span><strong>Titolo: </strong> {{ serie.name }} </span>
@@ -101,7 +104,6 @@ export default {
                 width: 250px;
                 min-height: 350px;
                 background-color: black;
-                padding: 20px;
                 color: white;
                 font-size: 10pt;
                 margin: 10px;
@@ -112,6 +114,11 @@ export default {
                     li {
                         margin-top: 5px;
                     }
+                }
+
+                img{
+                    width: 250px;
+                    min-height: 375px;
                 }
             }
         }
