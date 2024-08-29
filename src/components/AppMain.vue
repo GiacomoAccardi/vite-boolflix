@@ -79,7 +79,8 @@ export default {
                         </li>
 
                         <li>
-                            <span><strong>Voto: </strong> {{ serie.vote_average }} </span>
+                            <strong>Voto: </strong>
+                            <StarRating :rate="serie.vote_average" />
                         </li>
 
                         <li>
